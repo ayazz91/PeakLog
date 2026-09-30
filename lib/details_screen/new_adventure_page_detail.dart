@@ -12,7 +12,7 @@ class NewAdventurePage extends StatefulWidget {
 class _NewAdventurePageState extends State<NewAdventurePage> {
   DateTime? selectedDate;
   bool isChecked = false;
-
+  TimeOfDay? selectedTime;
   Future<void> selecteDate() async{
     final DateTime? picked = await showDatePicker(
      context: context,
@@ -115,8 +115,53 @@ class _NewAdventurePageState extends State<NewAdventurePage> {
                ),
                 ),
              ),
+             SizedBox(width: 20),
+              GestureDetector(
+                onTap: () async {
+                final pickedTime = await showTimePicker(
+                  context: context,
+                  initialTime: TimeOfDay.now(),
+               );
+                 if (pickedTime != null) {
+                 setState(() {
+  selectedTime = pickedTime;
+});
+                  }
+                },
+                child: Container(
+                   height: 50,
+               width: 165,
+               padding: const EdgeInsets.symmetric(horizontal: 12),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+            color: secondary,
+          ),
+          
+           child: Row(
+      children: [
+        const Icon(
+          Icons.more_time,
+          color: Colors.white70,
+          size: 20,
+        ),
+
+        const SizedBox(width: 10),
+
+        Text(
+          selectedTime != null
+    ? '${selectedTime!.hour}:${selectedTime!.minute}'
+    : 'Select Time',
+               style: const TextStyle(
+                color: Colors.white,
+                  fontSize: 14,
+                     ),
+                     ),
+                  ],
+               ),
+                ),
+              )
           ],
-          )
+         )
         ],
       ),
         ),
