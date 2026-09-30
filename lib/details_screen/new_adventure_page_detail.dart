@@ -124,8 +124,8 @@ class _NewAdventurePageState extends State<NewAdventurePage> {
                );
                  if (pickedTime != null) {
                  setState(() {
-  selectedTime = pickedTime;
-});
+                  selectedTime = pickedTime;
+                   });
                   }
                 },
                 child: Container(
@@ -161,11 +161,35 @@ class _NewAdventurePageState extends State<NewAdventurePage> {
                 ),
               )
           ],
+         ),
+         SizedBox(height: 20),
+         
+             Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+              color: secondary,
+              ),
+              height: 50,
+              width: double.infinity,
+              child:  Padding(
+                padding: const EdgeInsets.only(left: 15, top: 10),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Icon(
+                      Icons.area_chart_rounded, 
+                      color: Colors.white60,
+                    ),
+                    SizedBox(width: 20),
+                    Text('Moderate', style: TextStyle(color: Colors.white60 ),)
+                  ],
+                ),
+              ),
+             ),
+           ],
          )
-        ],
       ),
         ),
-   ),
     );
   }
 }
